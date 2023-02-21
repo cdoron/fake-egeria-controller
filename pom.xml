@@ -33,7 +33,6 @@
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
-            <version>1.33</version>
         </dependency>
 
         <dependency>
@@ -79,18 +78,6 @@
             <groupId>com.github.wnameless.json</groupId>
             <artifactId>json-flattener</artifactId>
             <version>0.14.2</version>
-        </dependency>
-
-        <!-- policy dependencies -->
-        <dependency>
-            <groupId>com.ibm.wdp.policy</groupId>
-            <artifactId>wdp-policy-service-sdk</artifactId>
-            <version>3.5.928</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.dp</groupId>
-            <artifactId>lts-magen</artifactId>
-            <version>0.1.7</version>
         </dependency>
 
         <dependency>
@@ -146,20 +133,7 @@
             <scope>test</scope>
         </dependency>
         <!-- dfo-commons -->
-        <dependency>
-            <groupId>com.ibm.cloud.dfo</groupId>
-            <artifactId>dfo-commons</artifactId>
-            <version>1.0</version>
-        </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>artifactory</id>
-            <name>ArtifactRepo</name>
-            <url>https://na.artifactory.swg-devops.com/artifactory/dataconn-maven-all/</url>
-        </repository>
-    </repositories>
 
     <pluginRepositories>
         <pluginRepository>
@@ -198,7 +172,7 @@
                     <execution>
                         <id>execution1</id>
                         <configuration>
-                            <sourceDirectory>${basedir}/src/main/resources/json/asset</sourceDirectory>
+                            <sourceDirectory>${basedir}/src/main/resources/</sourceDirectory>
                             <outputDirectory>${basedir}/src/main/gen</outputDirectory>
                             <includeConstructors>true</includeConstructors>
                             <includeAdditionalProperties>false</includeAdditionalProperties>
@@ -239,46 +213,6 @@
                 <artifactId>openapi-generator-maven-plugin</artifactId>
                 <version>5.4.0</version>
                 <executions>
-                    <execution>
-                        <id>policymanager generation</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <output>${project.basedir}</output>
-                            <inputSpec>
-                                ${project.basedir}/src/main/resources/policymanager.spec.yaml
-                            </inputSpec>
-                            <generatorName>spring</generatorName>
-                            <library>spring-boot</library>
-                            <basePackage>org.fybrik.policymanager</basePackage>
-                            <apiPackage>org.fybrik.policymanager.api</apiPackage>
-                            <modelPackage>org.fybrik.policymanager.model</modelPackage>
-                            <!-- <invokerPackage>org.fybrik.policymanager.handler</invokerPackage> -->
-                            <configOptions>
-                                <!-- <delegatePattern>true</delegatePattern> -->
-                                <sourceFolder>src/main/gen</sourceFolder>
-                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
-                                <sortParamsByRequiredFlag>true</sortParamsByRequiredFlag>
-                                <checkDuplicatedModelName>true</checkDuplicatedModelName>
-                                <useBeanValidation>true</useBeanValidation>
-                                <dateLibrary>java8-localdatetime</dateLibrary>
-                                <serializableModel>true</serializableModel>
-                                <dateLibrary>java8</dateLibrary>
-                                <!-- <configPackage>org.fybrik.policymanager.config</configPackage> -->
-                                <!-- <generateSupportingFiles>false</generateSupportingFiles> -->
-                                <!-- <supportingFilesToGenerate> ApiUtil.java, GetPoliciesDecisionsApiController.java </supportingFilesToGenerate> -->
-                                <disallowAdditionalPropertiesIfNotPresent>true</disallowAdditionalPropertiesIfNotPresent>
-                                <generateModels>true</generateModels>
-                                <generateModelDocumentation>false</generateModelDocumentation>
-                                <generateApis>true</generateApis>
-                                <generateApiTests>false</generateApiTests>
-                                <generateModelTests>false</generateModelTests>
-                                <generateSupportingFiles>false</generateSupportingFiles>
-                            </configOptions>
-                            <!-- <configHelp>true</configHelp> -->
-                        </configuration>
-                    </execution>
                     <execution>
                         <id>datacatalog generation</id>
                         <goals>
