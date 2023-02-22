@@ -31,7 +31,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "Connection", description = "Details of connection types supported for accessing data stores. Not all are necessarily supported by fybrik storage allocation mechanism used to store temporary/persistent datasets.")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
-public class Connection extends HashMap<String, Object> implements Serializable {
+public class Connection implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
